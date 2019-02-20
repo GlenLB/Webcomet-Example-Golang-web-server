@@ -83,7 +83,7 @@ func handlePagesPrincipales(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Definition de l'URL canonique
-	page.Canonical = r.URL.String()
+	page.Canonical = "https" + r.Host + r.URL.String()
 	// Récupération des template nécessaires
 	t, err := template.ParseFiles(nomFichier, "partials.html")
 	if err != nil {

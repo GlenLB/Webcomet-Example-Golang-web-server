@@ -4,6 +4,7 @@ package main
 
 import (
 	"net/http"
+	"webserver/mail"
 )
 
 func main() {
@@ -20,6 +21,16 @@ func main() {
 	// favicon.ico
 	http.Handle("/favicon.ico", http.FileServer(http.Dir("./")))
 
-	// Lancement du serveur
-	http.ListenAndServe(":8080", nil)
+	// Redirection de http à https
+	go http.ListenAndServe(":80", http.HandlerFunc(httpsRedirect))
+	// Lancement du serveur https
+	if err := http.ListenAndServeTLS(":443", "/etc/letsencrypt/live/webcomet.fr/fullchain.pem", "/etc/letsencrypt/live/webcomet.fr/privkey.pem", nil); err != nil {
+		mail.EnvoiMail("lebaill.glen@gmail.com", err.Error())
+		panic(err)
+	}
+}
+
+// Redirection de http à https.
+func httpsRedirect(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "https://"+r.Host+r.URL.String(), http.StatusMovedPermanently)
 }
