@@ -1,0 +1,21 @@
+{{define "404"}}
+{{template "head" .}}
+    <main>
+        <div class="content" id="elem1">
+            <h1>Erreur 404</h1>
+            <p>
+                <img src="statics/img/404.png" alt="Erreur 404" />
+            </p>
+            <h2>La page que vous demandez n'existe pas à l'adresse que vous avez saisi dans la barre de recherche.</h2>
+            <p>
+                <a class="newButton" href="/">Retourner à l'accueil</a>
+            </p>
+        </div>
+
+        {{template "formulaire"}}
+    </main>
+
+    {{template "footer"}}
+</body>
+</html>
+{{end}}

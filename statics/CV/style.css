@@ -1,0 +1,141 @@
+/* 
+Couleur 1 bleu => #4169e1
+Couleur 2 vert => #98fb98
+*/
+
+body {
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    justify-content: left;
+    /* Pour imprimer le CV */
+    max-width: 25cm;
+    max-height: 35.3cm;
+}
+
+/* image de profil */
+#photoProfil {
+    max-width: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+/* Section de gauche */
+nav {
+    color: white;
+    padding: 10px;
+    max-width: 250px;
+    background-color: #4169e1;
+    box-shadow: 0 0 10px silver;
+    border-radius: 10px;
+}
+
+/* Pour que les liens dans la nav s'affichent bien */
+nav a {
+    word-wrap: break-word;
+}
+
+/* Liens */
+nav a:visited, nav a {
+    color: #98fb98;
+    font-weight: bold;
+}
+
+/* QRCode */
+#qrCode {
+    text-align: center;
+    margin-top: 15px;
+    max-width: 150px;
+}
+
+/* Icones Font Awesome */
+.fas, .fab {
+    color: #98fb98;
+    font-size: 20px;
+}
+
+/* Section de droite */
+#sectionDroite {
+    margin-left: 10px;
+    max-width: 800px;
+    box-shadow: 0 0 10px silver;
+    border-radius: 10px;
+    padding: 8px;
+    padding-left: 25px;
+}
+
+/* Redéfinition du style de strong */
+strong {
+    color: #4169e1;
+}
+
+/* Redéfinition du style de hr */
+hr {
+    border-top: 1px solid lightgray;
+}
+
+/* class générale pour aligner des éléments en ligne */
+.align {
+    display: flex;
+}
+
+/* btn téléchargement */
+#btnTelechargement {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: block;
+    background: linear-gradient(#4169e1, #89a2ed);
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btnTelechargement:hover {
+    background: linear-gradient(#89a2ed, #4169e1);
+}
+
+/* RESPONSIVE /////////////// */
+/* Pour les téléphones */
+@media (max-width: 500px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        max-width: auto;
+        max-height: auto;
+    }
+
+    /* image de profil */
+    #photoProfil {
+        max-width: 100px;
+        border-radius: 30%;
+    }
+
+    nav {
+        max-width: 100%;
+        width: auto;
+    }
+
+    /* Icones Font Awesome */
+    .fas, .fab {
+        font-size: 16px;
+    }
+
+    /* QRCode */
+    #qrCode {
+        margin-top: 15px;
+        max-width: 100px;
+    }
+
+    /* Section de droite */
+    #sectionDroite {
+        margin-left: 0px;
+        max-width: 100%;
+        padding: 8px;
+        padding-left: 8px;
+    }
+
+}

@@ -1,0 +1,88 @@
+<!-- HEAD -->
+{{ define "head" }}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Feuille de styles CSS -->
+    <link rel="stylesheet" href="statics/css/style.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <title>{{.Title}}</title>
+    <meta name="description" content="{{.Description}}">
+    <link rel="canonical" href="{{.Canonical}}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{.Title}}" />
+</head>
+<body>
+    <div id="header">
+        <nav>
+            <!-- Logo -->
+            <a class="lien-logo" href="/"><h4 id="logo">WebComet</h4></a>
+            <!-- Menu hamburger mobile -->
+            <div id="menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <!-- Navigation -->
+        <span id="nav-link" class="invisible">
+            <a href="webmaster-creation-site-vitrine">Création de site vitrine</a>
+            <a href="consultant-seo">SEO</a>
+        </span>
+        <div id="header-container">
+            <h1>{{.H1}}</h1>
+            <div id="btnContact" class="newButton">Contact</div>
+        </div>
+    </div>
+
+    <div class="separator-container">
+        <span class="separator"></span>
+        <span class="separator2"></span>
+    </div>
+    {{ end }}
+
+
+<!-- FOOTER -->
+{{ define "footer" }}
+<footer>
+    <p>
+        Tous droits réservés WebComet.fr - <a href="/mentions-legales">Mentions légales</a> - <a href="/conditions-generales">CGV</a>
+    </p>
+</footer>
+
+<script src="statics/js/global.js"></script>
+<script src="statics/js/mail.js"></script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121365291-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-121365291-1');
+</script>
+{{ end }}
+
+
+<!-- FORMULAIRE -->
+{{ define "formulaire" }}
+<div class="contact_box">
+    <h2>Contactez-moi</h2>
+    <p>Contactez-moi pour une demande de création de site web<br>
+        ou d'optimisation de référencement naturel SEO</p>
+    <form action="/mail" method="POST">
+        <input id="emailAddress" type="email" placeholder="Votre email">
+        <textarea id="message" placeholder="Votre message : n'hésitez pas à être précis"></textarea>
+        <div id="btnSubmit" class="newButton">Envoyer</div>
+    </form>
+</div>
+{{ end }}
