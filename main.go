@@ -4,7 +4,7 @@ package main
 
 import (
 	"net/http"
-	"webserver/mail"
+	"webcomet/mail"
 )
 
 func main() {
@@ -21,6 +21,11 @@ func main() {
 	// favicon.ico
 	http.Handle("/favicon.ico", http.FileServer(http.Dir("./")))
 
+	// Pour le serveur de developpement
+	/* if err := http.ListenAndServe(":8081", nil); err != nil {
+		panic(err)
+	} */
+	// Pour le serveur de production
 	// Redirection de http à https
 	go http.ListenAndServe(":80", http.HandlerFunc(httpsRedirect))
 	// Lancement du serveur https

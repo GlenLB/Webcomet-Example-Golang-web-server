@@ -3,7 +3,7 @@ package erreurs
 import (
 	"os"
 	"time"
-	"webserver/mail"
+	"webcomet/mail"
 )
 
 // S'occupe de la gestion des erreurs en ajoutant une ligne dans le fichier de logs et en prévenant

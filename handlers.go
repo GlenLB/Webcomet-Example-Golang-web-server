@@ -12,8 +12,8 @@ package main
 import (
 	"html/template"
 	"net/http"
-	"webserver/erreurs"
-	"webserver/mail"
+	"webcomet/erreurs"
+	"webcomet/mail"
 )
 
 // Page stocke les informations dynamiques d'une page à insérer dans les template.
@@ -39,21 +39,21 @@ func handlePagesPrincipales(w http.ResponseWriter, r *http.Request) {
 		nomFichier = "index.html"
 		nomTemplate = "index"
 		page = Page{
-			Title:       "WebComet.fr - Création de site vitrine et référencement naturel SEO à Rennes - Webmaster freelance",
-			Description: "Vous cherchez un webmaster ou développeur web freelance pour créer votre site vitrine ? Vous cherchez un consultant SEO pour améliorer votre référencement naturel ? Alors contactez-moi, car je dispose des compétences pour vous créer un site web au référencement naturel optimisé",
-			H1:          "Création de site web &amp;<br> Référencement naturel SEO à Rennes",
+			Title:       "WebComet.fr - Création de site internet à Rennes et référencement naturel SEO - Webmaster Rennes",
+			Description: "Vous cherchez un webmaster ou développeur web freelance pour créer votre site internet à Rennes ou ailleurs ? Vous cherchez un consultant SEO pour améliorer votre référencement naturel ? Alors contactez-moi, car je dispose des compétences pour vous créer un site internet au référencement naturel optimisé pour que votre site web soit visible sur les moteurs de recherche comme Google.",
+			H1:          "Création de site internet à Rennes<br>Référencement naturel SEO",
 		}
 	case "/webmaster-creation-site-vitrine":
 		page = Page{
-			Title:       "Webmaster Création de site vitrine à Rennes et SEO",
-			Description: "Création de site vitrine",
-			H1:          "Création de site vitrine professionnel",
+			Title:       "Webmaster Rennes : Création de site vitrine à Rennes et SEO",
+			Description: "Vous avez besoin d'un site vitrine pour présenter votre activité ? Webmaster basé à Rennes, je peux vous créer un site vitrine correspondant à vos besoins quelle que soit votre localisation dans le monde.",
+			H1:          "Création de site vitrine professionnel<br>Développeur web basé à Rennes",
 		}
 	case "/consultant-seo":
 		page = Page{
-			Title:       "Consultant SEO freelance à Rennes - Webmaster consultant référencement naturel",
-			Description: "Consultant SEO freelance à Pacé près de Rennes, je dispose des compétences pour améliorer la visibilité de votre site web sur les moteurs de recherche comme Google. En améliorant le SEO de votre site web, vous capterez plus de trafic sur votre site web.",
-			H1:          "Consultant SEO (référencement naturel)<br> freelance à Rennes",
+			Title:       "Consultant SEO à Rennes - Consultant référencement naturel freelance",
+			Description: "Consultant SEO freelance à Pacé près de Rennes, je dispose des compétences pour améliorer la visibilité de votre site web sur les moteurs de recherche comme Google. En améliorant le référencement naturel de votre site internet, vous capterez plus de trafic qualifié sur votre site web.",
+			H1:          "Consultant SEO à Rennes<br>Référencement naturel à Rennes",
 		}
 	case "/conditions-generales":
 		page = Page{
@@ -69,7 +69,7 @@ func handlePagesPrincipales(w http.ResponseWriter, r *http.Request) {
 		}
 	case "/cv":
 		// Sert le fichier de CV non dynamique
-		http.ServeFile(w, r, "cv.html")
+		http.ServeFile(w, r, "templates/cv.html")
 		return
 	// Si l'URL ne fait pas partie des pages principales, appelle la fonction qui gere les 404 et stoppe l'exécution de la fonction
 	default:
@@ -85,7 +85,7 @@ func handlePagesPrincipales(w http.ResponseWriter, r *http.Request) {
 	// Definition de l'URL canonique
 	page.Canonical = "https" + r.Host + r.URL.String()
 	// Récupération des template nécessaires
-	t, err := template.ParseFiles(nomFichier, "partials.html")
+	t, err := template.ParseFiles("templates/"+nomFichier, "templates/partials.html")
 	if err != nil {
 		// Reponse http erreur 500 + message affiché à l'utilisateur
 		http.Error(w, "Erreur serveur, merci de réessayer dans quelques minutes.\n", 500)
