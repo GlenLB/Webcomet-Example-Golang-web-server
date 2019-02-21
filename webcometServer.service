@@ -3,12 +3,14 @@ Description=webcometServer
 After=network.target auditd.service
 
 [Service]
-ExecStart=/home/webserver/webcometServer
-ExecReload=/home/webserver/webcometServer
+ExecStart=/home/webcomet/webcometServer
+ExecReload=/home/webcomet/webcometServer
 KillMode=process
 Restart=always
 RestartPreventExitStatus=255
 Type=simple
+
+WorkingDirectory=/home/webcomet/
 
 [Install]
 WantedBy=multi-user.target
